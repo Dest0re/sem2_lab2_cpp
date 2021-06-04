@@ -11,7 +11,7 @@ private:
 public:
 	explicit invalid_array_size(std::string error_text) : error_text_{ std::move(error_text) } {}
 
-	[[nodiscard]] const char* what() const override
+	const char* what() const override
 	{
 		return this->error_text_.c_str();
 	}
@@ -65,7 +65,7 @@ public:
 
 	~array()
 	{
-		//delete[] data_;
+		delete[] data_;
 	}
 
 	void erase()
@@ -99,7 +99,7 @@ public:
 		return (this->data_[index]);
 	}
 
-	[[nodiscard]] int get_length() const
+	int get_length() const
 	{
 		return length_;
 	}
@@ -112,7 +112,7 @@ public:
 		stream << this->data_[length_ - 1] << end;
 	}
 
-	array<T>& operator=(const array<T> other)
+	array<T>& operator=(const array<T>& other)
 	{
 		this->length_ = other.get_length();
 
@@ -124,5 +124,22 @@ public:
 		}
 
 		return *this;
+	}
+
+	bool operator==(const array<T>& other)
+	{
+		if (this->get_length() != other.get_length()) return false;
+
+		for (int i = 0; i < this->get_length(); i++)
+		{
+			if ((*this)[i] != (other)[i]) return false;
+		}
+
+		return true;
+	}
+
+	bool operator!=(const array<T>& other)
+	{
+		return !(*this == other);
 	}
 };

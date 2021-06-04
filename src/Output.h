@@ -2,8 +2,36 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <Windows.h>
 
 #include "Input.h"
+
+enum class console_color
+{
+	black = 0,
+	blue = 1,
+	green = 2,
+	cyan = 3,
+	red = 4,
+	magenta = 5,
+	brown = 6,
+	light_gray = 7,
+	dark_gray = 8,
+	light_blue = 9,
+	light_green = 10,
+	light_cyan = 11,
+	light_red = 12,
+	light_magenta = 13,
+	yellow = 14,
+	white = 15
+};
+
+inline void change_color(const console_color foreground = console_color::white, const console_color background = console_color::black)
+{
+	const HANDLE h_std_out = GetStdHandle(STD_OUTPUT_HANDLE);
+	
+	SetConsoleTextAttribute(h_std_out, static_cast<WORD>(static_cast<int>(background) << 4 | static_cast<int>(foreground)));
+}
 
 // Ошибка при записи
 struct WriteError : std::exception {
@@ -147,3 +175,19 @@ public:
 		delete stream;
 	}
 };
+
+// Открыть файл для вывода
+inline FileOutput open_file_for_output(std::string filepath) {
+	while (true) {
+		try {
+			return FileOutput(filepath, std::ofstream::trunc);
+		}
+		catch (FileAlreadyExistError&) {
+			std::cout << "Filepath: ";
+		}
+		catch (FileNotOpenError&) {
+			std::cout << "File cannot exist. Filepath: ";
+		}
+		getline(std::cin, filepath);
+	}
+}

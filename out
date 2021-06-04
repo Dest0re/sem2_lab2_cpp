@@ -1,0 +1,28 @@
+Input and output data of the program "Odd Sorting"
+
+
+Input array: 
+
+arr[ 0 ] = 1
+arr[ 1 ] = 9
+arr[ 2 ] = 9
+arr[ 3 ] = -5
+arr[ 4 ] = -1
+arr[ 5 ] = 9
+arr[ 6 ] = -3
+arr[ 7 ] = -1
+arr[ 8 ] = 3
+arr[ 9 ] = 8
+
+Output array: 
+
+arr[ 0 ] = 8
+arr[ 1 ] = 1
+arr[ 2 ] = 9
+arr[ 3 ] = 9
+arr[ 4 ] = -5
+arr[ 5 ] = -1
+arr[ 6 ] = 9
+arr[ 7 ] = -3
+arr[ 8 ] = -1
+arr[ 9 ] = 3

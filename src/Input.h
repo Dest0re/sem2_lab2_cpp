@@ -300,3 +300,19 @@ public:
 		if (this->stream) delete static_cast<std::ifstream*>(stream);
 	}
 };
+
+inline FileInput open_file_for_input(std::string filepath) {
+	while (true) {
+		try {
+			return FileInput(filepath, std::ifstream::in);
+		}
+		catch (FileNotExistError&) {
+			std::cout << "File does not exist. Filepath: ";
+			getline(std::cin, filepath);
+		}
+		catch (FileNotOpenError&) {
+			std::cout << "File does not exist. Filepath: ";
+			getline(std::cin, filepath);
+		}
+	}
+}

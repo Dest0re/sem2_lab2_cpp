@@ -1,0 +1,16 @@
+Input and output data of the program "Odd Sorting"
+
+
+Input array: 
+
+arr[ 0 ] = 1
+arr[ 1 ] = 2
+arr[ 2 ] = 3
+arr[ 3 ] = 4
+
+Output array: 
+
+arr[ 0 ] = 2
+arr[ 1 ] = 4
+arr[ 2 ] = 1
+arr[ 3 ] = 3

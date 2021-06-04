@@ -140,13 +140,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="array.h" />
-    <ClInclude Include="program.h" />
-    <ClInclude Include="Input.h" />
-    <ClInclude Include="Output.h" />
+    <ClInclude Include="src\array.h" />
+    <ClInclude Include="src\Input.h" />
+    <ClInclude Include="src\Output.h" />
+    <ClInclude Include="src\program.h" />
+    <ClInclude Include="src\tests.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\array.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\program.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
